@@ -1,7 +1,2 @@
 ﻿  BookRentalSystem.cpp
-C:\Users\eyuel\OneDrive\Desktop\CPP\BookRentalSystem\BookRentalSystem.cpp(256,17): error C3861: 'ProcessRental': identifier not found
-C:\Users\eyuel\OneDrive\Desktop\CPP\BookRentalSystem\BookRentalSystem.cpp(270,23): error C3861: 'ProcessRental': identifier not found
-C:\Users\eyuel\OneDrive\Desktop\CPP\BookRentalSystem\BookRentalSystem.cpp(287,10): error C2601: 'ProcessRental': local function definitions are illegal
-      C:\Users\eyuel\OneDrive\Desktop\CPP\BookRentalSystem\BookRentalSystem.cpp(206,1):
-      this line contains a '{' which has not yet been matched
-  
+  BookRentalSystem.vcxproj -> C:\Users\eyuel\OneDrive\Desktop\CPP\BookRentalSystem\x64\Debug\BookRentalSystem.exe

@@ -106,7 +106,7 @@ bool rentCheck(customer list, int customerCount, rental_Node* head) {
 
         }
     }
-    return false;
+    return true;
 }
 
 //function to delete rental node
@@ -200,6 +200,103 @@ int processMenu(int choice)
 
 
 
+
+
+//function to process the rental of a book
+bool ProcessRental(customer list, bool newCustomer, int& customerCount, books b, int BCount, books bookList[], rental_Node*& head, date d)
+{
+    while (true) {
+        
+        bool isPassed = false;
+        bool bookRented = true;
+        //if customer exists proceed to book selection
+        if (newCustomer == false) {
+
+            bookRented = rentCheck(list, customerCount, head);
+            if (bookRented == true) {
+                return true;
+            }
+            
+          
+        }
+        //if customer is new proceed to book selection
+        else {
+            bookRented = false;
+        }
+
+        while (bookRented == false) {
+            int book;
+            cout << "----------------Available books-----------------" << endl;
+
+
+
+            //display available books
+            for (int i = 0; i < BCount; i++) {
+                cout << i + 1 << ". " << bookList[i].BooksTitle << "\nAvailable: { " << bookList[i].BookCount << " }" << endl;
+            }
+            cout << "------------------------------------------------" << endl;
+            cout << "Choose The Book You Want: ";
+            cin >> book;
+            cin.ignore(10000, '\n');
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Enter A Correct Number" << endl;
+                continue;
+            }
+
+            if (book < BCount + 1 && book > 0) {
+                if (bookList[book - 1].BookCount > 0) {
+                    book -= 1;
+                    b = bookList[book];
+                    cout << b.BooksTitle << "\n" << b.ISBN << "\nBook Selected Successfully" << endl;
+                    b.rentcount += 1;
+                    bookList[book].BookCount -= 1;
+                    d = rentalDate(d);
+                    cout << "------------------------------------------------" << endl;
+                    cout << "Rental Date: " << d.day << "/" << d.month << "/" << d.year << endl;
+                    isPassed = true;
+                }
+                else {
+                    cout << "Sorry, this book is currently unavailable. Please select another book.\n";
+                }
+            }
+
+            else {
+                cout << "Invalid Book Selection. Please try again.\n";
+                continue;
+            }
+
+            if (isPassed == true) {
+
+                rental_Node* node = createNew(b, list, d);
+                if (head == nullptr) {
+                    head = node;
+                }
+                else {
+                    rental_Node* temp = head; // Temporary pointer to traverse the list
+
+                    // Append the new node at the end of the linked list
+                    while (temp->next != nullptr) {
+                        temp = temp->next; // Traverse to the end of the list
+                    }
+                    temp->next = node; // Append the new node at the end of the list
+                }
+                cout << "Rental Successful!\n"; // Confirmation message
+                customerCount += 1;
+                cout << "------------------------------------------------" << endl;
+                cout << node->Renter.CustomerName << " rented \"" << node->RentedBook.BooksTitle << "\" on " << node->DaysRented.day << "/" << node->DaysRented.month << "/" << node->DaysRented.year << endl;
+                return true;
+
+
+            }
+
+
+        }
+
+    }
+}
+
 //function to add a new customer
 bool AddCustomer(customer& list, int& customerCount, int& BCount, books bookList[], rental_Node*& head, date d)
 {
@@ -282,98 +379,6 @@ bool AddCustomer(customer& list, int& customerCount, int& BCount, books bookList
 
 }
 
-//function to process the rental of a book
-bool ProcessRental(customer list, bool newCustomer, int& customerCount, books b, int BCount, books bookList[], rental_Node*& head, date d)
-{
-    while (true) {
-        bool wasFound = false;
-        bool isPassed = false;
-        bool bookRented = true;
-        //if customer exists proceed to book selection
-        if (newCustomer == false) {
-
-            bookRented = rentCheck(list, customerCount, head);
-            if (bookRented == true) {
-                return true;
-            }
-            wasFound = true;
-        }
-        //if customer is new proceed to book selection
-        else {
-            wasFound = false;
-        }
-
-        while (wasFound == false || bookRented == false) {
-            int book;
-            cout << "----------------Available books-----------------" << endl;
-
-
-
-            //display available books
-            for (int i = 0; i < BCount; i++) {
-                cout << i + 1 << ". " << bookList[i].BooksTitle << "\nAvailable: { " << bookList[i].BookCount << " }" << endl;
-            }
-            cout << "------------------------------------------------" << endl;
-            cout << "Choose The Book You Want: ";
-            cin >> book;
-            cin.ignore();
-            if (cin.fail()) {
-                cin.ignore(10000, '\n');
-                cout << "Enter A Correct Number" << endl;
-                continue;
-            }
-
-            if (book < BCount + 1 && book > 0) {
-                if (bookList[book - 1].BookCount > 0) {
-                    book -= 1;
-                    b = bookList[book];
-                    cout << b.BooksTitle << "\n" << b.ISBN << "\nBook Selected Successfully" << endl;
-                    b.rentcount += 1;
-                    bookList[book].BookCount -= 1;
-                    d = rentalDate(d);
-                    cout << "------------------------------------------------" << endl;
-                    cout << "Rental Date: " << d.day << "/" << d.month << "/" << d.year << endl;
-                    isPassed = true;
-                }
-                else {
-                    cout << "Sorry, this book is currently unavailable. Please select another book.\n";
-                }
-            }
-
-            else {
-                cout << "Invalid Book Selection. Please try again.\n";
-                continue;
-            }
-
-            if (isPassed == true) {
-
-                rental_Node* node = createNew(b, list, d);
-                if (head == nullptr) {
-                    head = node;
-                }
-                else {
-                    rental_Node* temp = head; // Temporary pointer to traverse the list
-
-                    // Append the new node at the end of the linked list
-                    while (temp->next != nullptr) {
-                        temp = temp->next; // Traverse to the end of the list
-                    }
-                    temp->next = node; // Append the new node at the end of the list
-                }
-                cout << "Rental Successful!\n"; // Confirmation message
-                customerCount += 1;
-                cout << "------------------------------------------------" << endl;
-                cout << node->Renter.CustomerName << " rented \"" << node->RentedBook.BooksTitle << "\" on " << node->DaysRented.day << "/" << node->DaysRented.month << "/" << node->DaysRented.year << endl;
-                return true;
-
-
-            }
-
-
-        }
-
-    }
-}
 
 //function to process the return of a book
 bool processReturn(books bookList[], int BCount, rental_Node* head)
