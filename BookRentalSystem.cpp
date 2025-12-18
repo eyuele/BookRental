@@ -1,13 +1,11 @@
 /*
-* -------- Group Members --------
-* Kidus Anteneh     RCD/0264/2017
-* Eyuel Esubalew    RCD/1690/2017 
-* Kidus Anteneh     RCD/0235/2017
-* Kidus Anteneh     RCD/0242/2017
-* -------------------------------
+* ---------- Group Members ----------
+* Kidus Anteneh         RCD/0264/2017
+* Eyuel Esubalew        RCD/1690/2017 
+* Akbari Girma          RCD/0235/2017
+* Birhanemedin Mulat    RCD/0242/2017
+* -----------------------------------
 */
-
-
 
 #include <iostream>
 #include <string>
@@ -152,7 +150,6 @@ date rentalDate(date d) {
 
 
 
-
 //function to initialize book inventory
 int BooksInventory(books bookList[]) {
     bookList[0].BooksTitle = "The Great Gatsby";
@@ -172,7 +169,7 @@ int BooksInventory(books bookList[]) {
 }
 
 //function to display the main menu and process user choice
-int processMenue(int choice)
+int processMenu(int choice)
 {
     while (true) {
 
@@ -199,6 +196,9 @@ int processMenue(int choice)
         return choice;
     }
 }
+
+
+
 
 //function to add a new customer
 bool AddCustomer(customer& list, int& customerCount, int& BCount, books bookList[], rental_Node*& head, date d)
@@ -245,7 +245,7 @@ bool AddCustomer(customer& list, int& customerCount, int& BCount, books bookList
         newCustomer = customerCheck(list, IsCorrect, customerCount, head);
 
         if (newCustomer == false && IsCorrect == true) {
-            cout << "Customer already exists. \nEnter Y to proceed to rental, \nEnter N to return to mian menue" << endl;
+            cout << "Customer already exists. \nEnter Y to proceed to rental, \nEnter N to return to main menu" << endl;
             cout << "------------------------------------------------" << endl;
             cout << "Proceed to rental? (Y/N): ";
             char proceed;
@@ -311,7 +311,7 @@ bool ProcessRental(customer list, bool newCustomer, int& customerCount, books b,
 
             //display available books
             for (int i = 0; i < BCount; i++) {
-                cout << i + 1 << ". " << bookList[i].BooksTitle << "\nAveleble: { " << bookList[i].BookCount << " }" << endl;
+                cout << i + 1 << ". " << bookList[i].BooksTitle << "\nAvailable: { " << bookList[i].BookCount << " }" << endl;
             }
             cout << "------------------------------------------------" << endl;
             cout << "Choose The Book You Want: ";
@@ -450,7 +450,7 @@ int main()
 
         int choice = 0;
         cout << endl;
-        choice = processMenue(choice);
+        choice = processMenu(choice);
 
         if (choice == 4) {
             deleteNode(head);
