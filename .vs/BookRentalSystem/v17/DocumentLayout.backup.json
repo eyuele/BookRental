@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\eyuel\\OneDrive\\Desktop\\CPP\\BookRentalSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DA4F2746-6C3E-40F3-BBA5-8841C9A811EF}|BookRentalSystem.vcxproj|C:\\Users\\eyuel\\OneDrive\\Desktop\\CPP\\BookRentalSystem\\BookRentalSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DA4F2746-6C3E-40F3-BBA5-8841C9A811EF}|BookRentalSystem.vcxproj|solutionrelative:BookRentalSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookRentalSystem.cpp",
+              "DocumentMoniker": "C:\\Users\\eyuel\\OneDrive\\Desktop\\CPP\\BookRentalSystem\\BookRentalSystem.cpp",
+              "RelativeDocumentMoniker": "BookRentalSystem.cpp",
+              "ToolTip": "C:\\Users\\eyuel\\OneDrive\\Desktop\\CPP\\BookRentalSystem\\BookRentalSystem.cpp",
+              "RelativeToolTip": "BookRentalSystem.cpp",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-18T13:10:03.402Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
